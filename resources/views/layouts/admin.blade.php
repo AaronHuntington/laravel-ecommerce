@@ -250,7 +250,22 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li>
+                            <a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+
+                             <!-- ============================================
+                            ============================================ -->
+                         <!--    12/05/2016 - Trying to get the logout button to work. Got this link
+                                from views/layouts/app.blade.php -->
+                            <!-- <a  href="{{ url('/logout') }}"
+                                    onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();"
+                                >
+                                <i class="fa fa-sign-out fa-fw"></i> Logout
+                            </a> -->
+                            <!-- ============================================
+                            ============================================ -->
+
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
