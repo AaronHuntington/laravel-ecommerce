@@ -20,10 +20,10 @@
             {!! Form::email('email', null, ['class'=>'form-control']) !!}
         </div>
 
-     <!--    <div id="" class="form-group">
+        <div id="" class="form-group">
             {!! Form::label('role_id', 'Role:') !!}
             {!! Form::select('role_id', [''=>'Choose Options'] + $roles, null, ['class'=>'form-control']) !!}
-        </div>   -->
+        </div>  
 
         <div id="" class="form-group">
             {!! Form::label('is_active', 'Status:') !!}
