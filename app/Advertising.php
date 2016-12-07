@@ -9,9 +9,9 @@ class Advertising extends Model
     //
     protected $table = 'advertising';
 
-    public static function test(){
-        return 'hello from test function yo.';
-    }
+    protected $fillable = [
+        'type','is_active','order','link','content','created_at','updated_at'
+    ];
 
     public function get_all_byType($type){
         return $type;

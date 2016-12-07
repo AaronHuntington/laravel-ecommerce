@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use App\Advertising;
 use Illuminate\Http\Request;
 
-use Illuminate\Database\Eloquent\Scope;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
 
 class AdminHomeBillboardController extends Controller
 {
@@ -24,10 +21,8 @@ class AdminHomeBillboardController extends Controller
         // $billboards = $billboards->get_all_byType($type);
 
         // $billboards = Advertising::where('type', $type);
-        // $roles = Role::lists('name','id')->all();
 
-
-        $billboards = Advertising::where('name','homeBillboard');
+        $billboards = Advertising::where('type','test')->get();
 
         return view('admin.advertising.homeBillboard.index', compact('billboards'));
     }
