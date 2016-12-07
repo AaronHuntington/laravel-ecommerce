@@ -33,7 +33,4 @@
             </tbody>
         </table>
     </section>
-
-
-
 @endsection
