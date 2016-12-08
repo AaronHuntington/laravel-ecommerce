@@ -29,10 +29,10 @@
             {!! Form::select('is_active',array(1=>'Active', 0=>'Not Active'), 0, ['class'=>'form-control']) !!}
         </div>
 
-      <!--   <div id="" class="form-group">
+        <div id="" class="form-group">
             {!! Form::label('photo_id', 'Photo:') !!}
             {!! Form::file('photo_id', null, ['class'=>'form-control']) !!}
-        </div> -->
+        </div>
 
         <div id="" class="form-group">
             {!! Form::label('password', 'Password:') !!}
