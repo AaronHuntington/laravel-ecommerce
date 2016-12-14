@@ -13,7 +13,8 @@ class Advertising extends Model
         'type','is_active','order','link','content','created_at','updated_at'
     ];
 
-    public function get_all_byType($type){
-        return $type;
-    }
+    //12/14/16 - Delete if not needed. 
+    // public function get_all_byType($type){
+    //     return $type;
+    // }
 }

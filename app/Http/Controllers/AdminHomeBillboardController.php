@@ -22,7 +22,7 @@ class AdminHomeBillboardController extends Controller
 
         // $billboards = Advertising::where('type', $type);
 
-        $billboards = Advertising::where('type','test')->get();
+        $billboards = Advertising::where('type','homeBillboard')->get();
 
         return view('admin.advertising.homeBillboard.index', compact('billboards'));
     }
@@ -34,7 +34,8 @@ class AdminHomeBillboardController extends Controller
      */
     public function create()
     {
-        return 'Inside the create function!';
+
+        return view('admin.advertising.homebillboard.create');
     }
 
     /**
@@ -46,6 +47,17 @@ class AdminHomeBillboardController extends Controller
     public function store(Request $request)
     {
         //
+
+        $name   = $request->name;
+        $type   = $request->type;
+        $status = $request->is_active; 
+        $input  = $request->all();
+
+        $input['type'] = "homeBillboard";
+
+        Advertising::create($input);
+
+        return redirect('/admin/billboard');
     }
 
     /**
@@ -67,7 +79,8 @@ class AdminHomeBillboardController extends Controller
      */
     public function edit($id)
     {
-        //
+        $billboard = Advertising::findOrFail($id);
+        return view('admin.advertising.homeBillboard.edit', compact('billboard'));
     }
 
     /**
@@ -80,6 +93,12 @@ class AdminHomeBillboardController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $billboard = Advertising::findOrFail($id);
+
+        $input = $request->all();
+
+        $billboard->update($input);
+        return redirect('/admin/billboard');
     }
 
     /**
@@ -90,6 +109,10 @@ class AdminHomeBillboardController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $billboard = Advertising::findOrFail($id);
+
+        $billboard->delete();
+
+        return redirect('/admin/billboard');
     }
 }
