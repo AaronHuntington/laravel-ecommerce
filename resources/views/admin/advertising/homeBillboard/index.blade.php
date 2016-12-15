@@ -12,7 +12,6 @@
 
 
     <section class="row">
-
         <div class="col-lg-12">
             <h1 class="page-header">Home Page Billboard</h1>
         </div>

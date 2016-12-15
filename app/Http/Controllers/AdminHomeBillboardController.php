@@ -48,10 +48,13 @@ class AdminHomeBillboardController extends Controller
     {
         //
 
-        $name   = $request->name;
-        $type   = $request->type;
-        $status = $request->is_active; 
+        $name = $request->content;
         $input  = $request->all();
+
+        if($file = $request->file('photo')){
+            $photo_fileName = str_replace(' ', '', $name);
+            $file->move('../images', $photo_fileName.".jpg");
+        }
 
         $input['type'] = "homeBillboard";
 
@@ -110,6 +113,10 @@ class AdminHomeBillboardController extends Controller
     public function destroy($id)
     {
         $billboard = Advertising::findOrFail($id);
+        $photo_fileName = str_replace(' ', '', $billboard->content).'.jpg';
+
+
+        unlink(base_path()."/images/".$photo_fileName);
 
         $billboard->delete();
 

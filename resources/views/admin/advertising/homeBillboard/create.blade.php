@@ -8,6 +8,12 @@
         </div>
 
         {!! Form::open(['method'=>'POST', 'action'=>'AdminHomeBillboardController@store', 'files'=>true]) !!}
+
+            <div id="" class="form-group">
+                {!! Form::label('photo', 'Photo:') !!}
+                {!! Form::file('photo', null, ['class'=>'form-control']) !!}
+            </div>
+
             <div class="form-group">
                 {!! Form::label('content', 'Name:') !!}
                 {!! Form::text('content', null, ['class'=>'form-control']) !!}
@@ -22,7 +28,7 @@
                 {!! Form::label('is_active', 'Status:') !!}
                 {!! Form::select('is_active',array(1=>'Active', 0=>'Not Active'), 0, ['class'=>'form-control']) !!}
             </div>
-
+<?php echo base_path();?>
             <div class="form-group">
                 {!! Form::submit('Create Billboard', ['class'=>'btn btn-primary']) !!}
             </div>
