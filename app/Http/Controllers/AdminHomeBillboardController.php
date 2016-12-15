@@ -15,13 +15,6 @@ class AdminHomeBillboardController extends Controller
      */
     public function index()
     {
-        $type = 'homeBillboard';
-
-        // $billboards = new Advertising;
-        // $billboards = $billboards->get_all_byType($type);
-
-        // $billboards = Advertising::where('type', $type);
-
         $billboards = Advertising::where('type','homeBillboard')->get();
 
         return view('admin.advertising.homeBillboard.index', compact('billboards'));

@@ -1,5 +1,8 @@
 @extends('layouts.admin')
 @section('content')
+    <?php 
+        // echo $billboards->content;
+    ?>
     <script>
         function confirmDelete(){
             var x = confirm("Are you sure you want to delete?");
@@ -43,6 +46,8 @@
                             <a href="{{route('billboard.edit', $billboard->id)}}">
                                 {{$billboard->content}}
                             </a>
+                            <br>
+                            <img height="100" src="{{URL::to('../images/'.str_replace(' ', '', $billboard->content).'.jpg')}}">
                         </td>
                         <td>{{$billboard->is_active}}</td>
                         <td>{{$billboard->order}}</td>
