@@ -9,6 +9,14 @@ use App\Http\Requests\HomeBillboardCreateRequest;
 
 class AdminHomeBillboardController extends Controller
 {
+
+    // rename(base_path()."/images/".$oldName_imgFile, base_path()."/images/".$newName_imgFile);
+
+    // var $image_filePath = base_path();
+    // .'/images/advertising/homeBillboard/'; 
+
+    var $image_filePath = '/images/advertising/homeBillboard/'; 
+
     /**
      * Display a listing of the resource.
      *
@@ -17,8 +25,9 @@ class AdminHomeBillboardController extends Controller
     public function index()
     {
         $billboards = Advertising::where('type','homeBillboard')->get();
+        $img_filePath = $this->image_filePath;
 
-        return view('admin.advertising.homeBillboard.index', compact('billboards'));
+        return view('admin.advertising.homeBillboard.index', compact('billboards','img_filePath'));
     }
 
     /**
@@ -40,17 +49,17 @@ class AdminHomeBillboardController extends Controller
      */
     public function store(HomeBillboardCreateRequest $request)
     {
-        //
-
         $name = $request->content;
         $input  = $request->all();
 
         if($file = $request->file('photo')){
             $photo_fileName = str_replace(' ', '', $name);
-            $file->move('../images', $photo_fileName.".jpg");
+            $file->move(base_path().$this->image_filePath, $photo_fileName.".jpg");
         }
 
         $input['type'] = "homeBillboard";
+
+        echo $this->image_filePath;
 
         Advertising::create($input);
 
@@ -89,12 +98,16 @@ class AdminHomeBillboardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
         $billboard = Advertising::findOrFail($id);
-
         $input = $request->all();
 
+        $oldName_imgFile = str_replace(' ', '', $billboard->content.'.jpg');
+        $newName_imgFile = str_replace(' ', '', $input['content'].'.jpg');
+
+        rename(base_path()."/images/".$oldName_imgFile, base_path()."/images/".$newName_imgFile);
+
         $billboard->update($input);
+
         return redirect('/admin/billboard');
     }
 
@@ -110,7 +123,7 @@ class AdminHomeBillboardController extends Controller
         $photo_fileName = str_replace(' ', '', $billboard->content).'.jpg';
 
 
-        unlink(base_path()."/images/".$photo_fileName);
+        unlink(base_path()."/images/advertising/homeBillboard/".$photo_fileName);
 
         $billboard->delete();
 
