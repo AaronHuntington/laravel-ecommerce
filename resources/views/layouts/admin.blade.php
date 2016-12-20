@@ -8,9 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>SB Admin 2 - Bootstrap Admin Theme</title>
-
     <!-- Bootstrap Core CSS -->
     <link href="{{ url('/') }}/css/bootstrap.min.css" rel="stylesheet">
 
@@ -335,7 +333,9 @@
                             <a href="{{url('/admin/manufacturers/')}}"><i class="fa fa-table fa-fw"></i> Manufacturers</a>
                         </li>
 
-
+                        <li>
+                            <a href="{{url('/admin/categories/')}}"><i class="fa fa-table fa-fw"></i> Categories</a>
+                        </li>
 
 
 

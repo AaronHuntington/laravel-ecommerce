@@ -28,3 +28,5 @@ Route::resource('/admin/users', 'AdminUsersController');
 Route::resource('/admin/billboard', 'AdminHomeBillboardController');
 
 Route::resource('/admin/manufacturers', 'AdminManufacturerController');
+
+Route::resource('/admin/categories', 'AdminCategoriesController');
