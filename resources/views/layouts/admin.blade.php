@@ -327,13 +327,13 @@
                                     <a href="#">Second Level Item</a>
                                 </li>
                             </ul>
-                            <!-- /.nav-second-level -->
                         </li>
 
 
 
-
-
+                        <li>
+                            <a href="{{url('/admin/manufacturers/')}}"><i class="fa fa-table fa-fw"></i> Manufacturers</a>
+                        </li>
 
 
 

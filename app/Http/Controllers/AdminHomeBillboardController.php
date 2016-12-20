@@ -104,7 +104,7 @@ class AdminHomeBillboardController extends Controller
         $oldName_imgFile = str_replace(' ', '', $billboard->content.'.jpg');
         $newName_imgFile = str_replace(' ', '', $input['content'].'.jpg');
 
-        rename(base_path()."/images/".$oldName_imgFile, base_path()."/images/".$newName_imgFile);
+        rename(base_path()."/images/".$oldName_imgFile, base_path()."/images/advertising/homeBillboard/".$newName_imgFile);
 
         $billboard->update($input);
 

@@ -49,28 +49,10 @@ class AdminUsersController extends Controller
             $input['password'] = bcrypt($request->password);
         } 
 
-        // User::create($input);
-        // return redirect('/admin/users');
-
-// $billboards = Advertising::where('type','test')->get();
-
 
         $email = $input['email'];
         $id = User::where('email', $email)->get()->all();
         $file = $request->file('photo_id');
-        // $name = $input['id'].trim($input['name']);
-
-
-        // $test = $file->move('images', $name);
-
-
-        // echo 'IDs: '.$id['id'];
-        echo '<br>';
-        echo 'File: '.$file;
-        echo '<br>';
-        echo '<pre>';
-        var_dump($id);
-        echo '<br>';
 
         return 'hellio';
     }

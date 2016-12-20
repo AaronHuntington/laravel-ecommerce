@@ -26,3 +26,5 @@ Route::get('/admin', function(){
 Route::resource('/admin/users', 'AdminUsersController');
 
 Route::resource('/admin/billboard', 'AdminHomeBillboardController');
+
+Route::resource('/admin/manufacturers', 'AdminManufacturerController');
