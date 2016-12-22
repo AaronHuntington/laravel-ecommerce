@@ -27,6 +27,13 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function isAdmin(){
+        if($this->role->name == "Administrator"){
+            return true;
+        }
+        return false;
+    }
+
     public function role(){
         return $this->belongsTo('App\Role');
     }

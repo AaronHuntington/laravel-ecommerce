@@ -11,7 +11,7 @@
     </script>
     <section class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">category List &nbsp&nbsp&nbsp<a class="btn btn-default" href="{{url('/admin/categories/create')}}" role="button">Create Category</a></h1>
+            <h1 class="page-header">Category List &nbsp&nbsp&nbsp<a class="btn btn-default" href="{{url('/admin/categories/create')}}" role="button">Create Category</a></h1>
         </div>
         <table class="table">
             <thead>
