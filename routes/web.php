@@ -11,15 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::resource('/', 'HomeController');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-
-
 
 Route::group(['middleware' => 'admin'], function(){
 

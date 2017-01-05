@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Advertising;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    var $image_filePath = '../images/advertising/homeBillboard/'; 
+
     /**
      * Create a new controller instance.
      *
@@ -13,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -23,6 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $billboards = Advertising::where('type','homeBillboard')->get();
+        $img_filePath = $this->image_filePath;
+
+        return view('welcome', compact('billboards','img_filePath'));
     }
 }
