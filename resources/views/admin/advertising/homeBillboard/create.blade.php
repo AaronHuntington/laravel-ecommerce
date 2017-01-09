@@ -11,7 +11,7 @@
 
         {!! Form::open(['method'=>'POST', 'action'=>'AdminHomeBillboardController@store', 'files'=>true]) !!}
             <div id="" class="form-group">
-                {!! Form::label('photo', 'Photo:') !!}
+                {!! Form::label('photo', 'Photo (For Best Results: 2000x800 size image):') !!}
                 {!! Form::file('photo', null, ['class'=>'form-control']) !!}
             </div>
             <div class="form-group">
