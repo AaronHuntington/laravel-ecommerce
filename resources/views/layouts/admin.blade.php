@@ -290,7 +290,7 @@
                             <a href="/admin"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="/admin/products"><i class="fa fa-dashboard fa-fw"></i> Products</a>
+                            <a href="{{ url('/admin/products/') }}"><i class="fa fa-dashboard fa-fw"></i> Products</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i>Users<span class="fa arrow"></span></a>

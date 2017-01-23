@@ -42,8 +42,7 @@
                                 {{$billboard->content}}
                             </a>
                             <br>
-                            <img height="100" src="{{URL::to('../'.$img_filePath.str_replace(' ', '', $billboard->content).'.jpg')}}">
-                        </td>
+                            <img height="100" src="{{URL::to('../'.$img_filePath.str_replace(' ', '', $billboard->content).'.jpg')}}">                        </td>
                         <td>{{$billboard->is_active}}</td>
                         <td>{{$billboard->order}}</td>
                         <td>{{$billboard->link}}</td>

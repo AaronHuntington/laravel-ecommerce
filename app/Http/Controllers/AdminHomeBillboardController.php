@@ -58,9 +58,6 @@ class AdminHomeBillboardController extends Controller
         }
 
         $input['type'] = "homeBillboard";
-
-        echo $this->image_filePath;
-
         Advertising::create($input);
 
         return redirect('/admin/billboard');

@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Products;
 use Illuminate\Http\Request;
 
 class AdminProductsController extends Controller
 {
+
+    var $image_filePath = '/images/products/'; 
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +17,10 @@ class AdminProductsController extends Controller
      */
     public function index()
     {
-        //
+        $img_filePath = '..'.$this->image_filePath;
+
+        $products = Products::all();
+        return view('admin.products.index', compact('products','img_filePath'));
     }
 
     /**
@@ -23,7 +30,7 @@ class AdminProductsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.products.create');
     }
 
     /**
@@ -34,7 +41,18 @@ class AdminProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        $imgFile_name = $input["model"];
+
+
+        if($file = $request->file('photo')){
+            $photo_fileName = str_replace(' ', '', $imgFile_name);
+            mkdir(base_path().$this->image_filePath.$imgFile_name);
+            $file->move(base_path().$this->image_filePath.$imgFile_name."/", $photo_fileName.".jpg");
+        }
+
+        Products::create($input);
+        return redirect('/admin/products');
     }
 
     /**
@@ -56,7 +74,9 @@ class AdminProductsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Products::findOrFail($id);
+        $img_filePath = '..'.$this->image_filePath;
+        return view('admin.products.edit', compact('product','img_filePath'));
     }
 
     /**
@@ -68,7 +88,17 @@ class AdminProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Products::findOrFail($id);
+        $input = $request->all();
+
+        // $oldName_imgFile = str_replace(' ', '', $billboard->content.'.jpg');
+        // $newName_imgFile = str_replace(' ', '', $input['content'].'.jpg');
+
+        // rename(base_path()."/images/".$oldName_imgFile, base_path()."/images/advertising/homeBillboard/".$newName_imgFile);
+
+        $product->update($input);
+
+        return redirect('/admin/products');
     }
 
     /**
@@ -79,6 +109,21 @@ class AdminProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Products::findOrFail($id);
+        $img_fileName = $product->model;
+
+        //Deletes all files in the product folder.
+        $files = glob(base_path().$this->image_filePath.$img_fileName.'/*');
+        foreach($files as $file){
+            if(is_file($file)){
+                unlink($file);
+            }
+        }
+
+        //Deletes product folder.
+        rmdir(base_path().$this->image_filePath.$img_fileName);
+
+        $product->delete();
+        return redirect('admin/products');
     }
 }
